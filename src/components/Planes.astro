@@ -1,15 +1,13 @@
 <section class="w-full py-20 px-8 bg-white">
   <div class="max-w-6xl mx-auto">
 
-    <!-- Header -->
     <h2 class="text-[#0d3b38] text-4xl md:text-5xl font-bold mb-10">
       Una sola inversión,<br>todo tu cuidado dental.
     </h2>
 
-    <!-- Cards row -->
-    <div class="flex md:grid md:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none">
+    <div class="flex md:grid md:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scroll-smooth planes-container">
 
-      <!-- Card 1: Gran titular - imagen de fondo oscura -->
+      <!-- Card 1 -->
       <div class="relative rounded-3xl overflow-hidden min-h-[480px] flex flex-col justify-between p-7 bg-[#0a1f1e] w-80 md:w-full flex-shrink-0 snap-start">
         <img
           src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=700&fit=crop"
@@ -36,7 +34,7 @@
         </div>
       </div>
 
-      <!-- Card 2: Beneficios - fondo teal claro -->
+      <!-- Card 2 -->
       <div class="relative rounded-3xl overflow-hidden min-h-[480px] flex flex-col justify-between p-7 bg-[#dff4f4] w-80 md:w-full flex-shrink-0 snap-start">
         <div class="flex flex-col justify-between h-full">
           <div>
@@ -90,7 +88,7 @@
         </div>
       </div>
 
-      <!-- Card 3: Planes disponibles - fondo oscuro teal -->
+      <!-- Card 3 -->
       <div class="relative rounded-3xl overflow-hidden min-h-[480px] flex flex-col justify-between p-7 bg-[#0d5c56] w-80 md:w-full flex-shrink-0 snap-start">
         <div class="flex flex-col justify-between h-full">
           <div>
@@ -98,9 +96,7 @@
             <h3 class="text-white text-2xl font-bold leading-snug mb-8">
               Elige el plan<br>que se adapta<br>a ti.
             </h3>
-
             <div class="space-y-3">
-              <!-- Individual -->
               <div class="bg-white/10 border border-white/15 rounded-2xl px-5 py-4 flex items-center justify-between hover:bg-white/20 transition-colors cursor-pointer">
                 <div class="flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
@@ -114,8 +110,6 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
                 </svg>
               </div>
-
-              <!-- Dual -->
               <div class="bg-white/10 border border-white/15 rounded-2xl px-5 py-4 flex items-center justify-between hover:bg-white/20 transition-colors cursor-pointer">
                 <div class="flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
@@ -129,8 +123,6 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
                 </svg>
               </div>
-
-              <!-- Familiar -->
               <div class="bg-white/10 border border-white/15 rounded-2xl px-5 py-4 flex items-center justify-between hover:bg-white/20 transition-colors cursor-pointer">
                 <div class="flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
@@ -146,7 +138,6 @@
               </div>
             </div>
           </div>
-
           <button class="mt-6 w-full bg-white text-[#0d5c56] text-sm font-semibold py-3.5 rounded-xl hover:bg-[#dff4f4] transition-colors">
             Ver planes
           </button>
@@ -155,51 +146,65 @@
 
     </div>
 
-    <!-- Mobile Navigation Dots - Solo visible en móviles -->
+    <!-- Dots - solo móvil -->
     <div class="flex justify-center items-center gap-2 mt-6 md:hidden">
-      <button class="w-2 h-2 rounded-full bg-[#0d5c56] transition-all duration-300" onclick="scrollToPlan(0)"></button>
-      <button class="w-2 h-2 rounded-full bg-[#0d5c56]/30 transition-all duration-300" onclick="scrollToPlan(1)"></button>
-      <button class="w-2 h-2 rounded-full bg-[#0d5c56]/30 transition-all duration-300" onclick="scrollToPlan(2)"></button>
+      <button class="planes-dot w-2 h-2 rounded-full bg-[#0d5c56] transition-all duration-300" data-index="0"></button>
+      <button class="planes-dot w-2 h-2 rounded-full bg-[#0d5c56]/30 transition-all duration-300" data-index="1"></button>
+      <button class="planes-dot w-2 h-2 rounded-full bg-[#0d5c56]/30 transition-all duration-300" data-index="2"></button>
     </div>
 
   </div>
 </section>
 
 <script>
-  function scrollToPlan(index: number) {
-    const container = document.querySelector('.overflow-x-auto');
-    const cards = container?.querySelectorAll('.snap-start');
-    if (container && cards && cards[index]) {
-      cards[index].scrollIntoView({ 
-        behavior: 'smooth', 
-        inline: 'start',
-        block: 'nearest'
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.planes-container');
+    const dots = document.querySelectorAll('.planes-dot');
+
+    if (!container || dots.length === 0) return;
+
+    function updateDots(activeIndex) {
+      dots.forEach(function (dot, index) {
+        if (index === activeIndex) {
+          dot.classList.add('bg-[#0d5c56]');
+          dot.classList.remove('bg-[#0d5c56]/30');
+        } else {
+          dot.classList.remove('bg-[#0d5c56]');
+          dot.classList.add('bg-[#0d5c56]/30');
+        }
       });
     }
-  }
 
-  // Actualizar dots activos al hacer scroll
-  document.addEventListener('DOMContentLoaded', function() {
-    const container = document.querySelector('.overflow-x-auto') as HTMLElement;
-    const dots = document.querySelectorAll('.flex.justify-center button');
-    
-    if (container && dots.length > 0) {
-      container.addEventListener('scroll', function() {
+    function scrollToCard(index) {
+      const cards = container.querySelectorAll('.snap-start');
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        updateDots(index);
+      }
+    }
+
+    dots.forEach(function (dot, index) {
+      dot.addEventListener('click', function () {
+        scrollToCard(index);
+      });
+    });
+
+    // Scroll listener mejorado y simplificado
+    var scrollTimeout;
+    container.addEventListener('scroll', function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function () {
         const scrollLeft = container.scrollLeft;
         const firstCard = container.querySelector('.snap-start') as HTMLElement;
-        const cardWidth = firstCard?.offsetWidth || 0;
-        const activeIndex = Math.round(scrollLeft / cardWidth);
+        const cardWidth = firstCard?.offsetWidth || 320;
+        const calculatedIndex = Math.round(scrollLeft / cardWidth);
+        const clampedIndex = Math.max(0, Math.min(calculatedIndex, 2));
         
-        dots.forEach((dot, index) => {
-          if (index === activeIndex) {
-            dot.classList.remove('bg-[#0d5c56]/30');
-            dot.classList.add('bg-[#0d5c56]');
-          } else {
-            dot.classList.remove('bg-[#0d5c56]');
-            dot.classList.add('bg-[#0d5c56]/30');
-          }
-        });
-      });
-    }
+        updateDots(clampedIndex);
+      }, 50);
+    });
+
+    // Inicializar primer dot como activo
+    updateDots(0);
   });
 </script>
