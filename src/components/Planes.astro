@@ -154,5 +154,52 @@
       </div>
 
     </div>
+
+    <!-- Mobile Navigation Dots - Solo visible en móviles -->
+    <div class="flex justify-center items-center gap-2 mt-6 md:hidden">
+      <button class="w-2 h-2 rounded-full bg-[#0d5c56] transition-all duration-300" onclick="scrollToPlan(0)"></button>
+      <button class="w-2 h-2 rounded-full bg-[#0d5c56]/30 transition-all duration-300" onclick="scrollToPlan(1)"></button>
+      <button class="w-2 h-2 rounded-full bg-[#0d5c56]/30 transition-all duration-300" onclick="scrollToPlan(2)"></button>
+    </div>
+
   </div>
 </section>
+
+<script>
+  function scrollToPlan(index: number) {
+    const container = document.querySelector('.overflow-x-auto');
+    const cards = container?.querySelectorAll('.snap-start');
+    if (container && cards && cards[index]) {
+      cards[index].scrollIntoView({ 
+        behavior: 'smooth', 
+        inline: 'start',
+        block: 'nearest'
+      });
+    }
+  }
+
+  // Actualizar dots activos al hacer scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.overflow-x-auto') as HTMLElement;
+    const dots = document.querySelectorAll('.flex.justify-center button');
+    
+    if (container && dots.length > 0) {
+      container.addEventListener('scroll', function() {
+        const scrollLeft = container.scrollLeft;
+        const firstCard = container.querySelector('.snap-start') as HTMLElement;
+        const cardWidth = firstCard?.offsetWidth || 0;
+        const activeIndex = Math.round(scrollLeft / cardWidth);
+        
+        dots.forEach((dot, index) => {
+          if (index === activeIndex) {
+            dot.classList.remove('bg-[#0d5c56]/30');
+            dot.classList.add('bg-[#0d5c56]');
+          } else {
+            dot.classList.remove('bg-[#0d5c56]');
+            dot.classList.add('bg-[#0d5c56]/30');
+          }
+        });
+      });
+    }
+  });
+</script>
