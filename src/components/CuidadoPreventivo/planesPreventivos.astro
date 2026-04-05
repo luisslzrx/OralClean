@@ -10,13 +10,12 @@
     </div>
 
     <!-- Plans grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="flex md:grid md:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scroll-smooth planes-container">
 
       <!-- INDIVIDUAL -->
-      <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm flex flex-col">
+      <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm flex flex-col w-80 md:w-full flex-shrink-0 snap-start">
         <div>
-          <p class="text-[rgb(21,101,192)] font-bold text-base mb-2">Individual</p>
-          <p class="text-[rgb(33,33,33)] text-4xl font-bold leading-none mb-1">$X,XXX <span class="text-lg font-normal text-gray-400">/ año</span></p>
+          <p class="text-[rgb(21,101,192)] text-4xl md:text-5xl font-bold leading-none mb-6">Individual</p>
           <p class="text-[rgb(21,101,192)] text-sm font-medium mb-6">Primera consulta sin costo.</p>
           <div class="border-t border-gray-100 my-6"></div>
 
@@ -64,13 +63,13 @@
 
         <div class="mt-8">
           <button class="w-full border border-[rgb(21,101,192)] text-[rgb(21,101,192)] text-sm font-semibold py-3.5 rounded-xl hover:bg-[rgb(21,101,192)] hover:text-white transition-colors">
-            Elegir Individual
+            Cotizar Individual
           </button>
         </div>
       </div>
 
       <!-- DUAL — destacado -->
-      <div class="bg-[rgb(21,101,192)] rounded-3xl p-8 border border-transparent shadow-lg flex flex-col relative overflow-hidden">
+      <div class="bg-[rgb(21,101,192)] rounded-3xl p-8 border border-transparent shadow-lg flex flex-col relative overflow-hidden w-80 md:w-full flex-shrink-0 snap-start">
         <!-- Glow -->
         <div class="absolute top-0 right-0 w-48 h-48 bg-[rgb(30,136,229)]/30 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -80,8 +79,7 @@
         </div>
 
         <div class="relative z-10">
-          <p class="text-white font-bold text-base mb-2">Dual</p>
-          <p class="text-white text-4xl font-bold leading-none mb-1">$X,XXX <span class="text-lg font-normal text-white/50">/ año</span></p>
+          <p class="text-white text-4xl md:text-5xl font-bold leading-none mb-6">Dual</p>
           <p class="text-white text-sm font-medium mb-6">Mejor costo por persona.</p>
           <div class="border-t border-white/10 my-6"></div>
 
@@ -129,16 +127,15 @@
 
         <div class="mt-8 relative z-10">
           <button class="w-full bg-[rgb(30,136,229)] text-white text-sm font-semibold py-3.5 rounded-xl hover:bg-[rgb(21,101,192)] transition-colors">
-            Elegir Dual
+            Cotizar Dual
           </button>
         </div>
       </div>
 
       <!-- FAMILIAR -->
-      <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm flex flex-col">
+      <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm flex flex-col w-80 md:w-full flex-shrink-0 snap-start">
         <div>
-          <p class="text-[rgb(21,101,192)] font-bold text-base mb-2">Familiar</p>
-          <p class="text-[rgb(33,33,33)] text-4xl font-bold leading-none mb-1">$X,XXX <span class="text-lg font-normal text-gray-400">/ año</span></p>
+          <p class="text-[rgb(21,101,192)] text-4xl md:text-5xl font-bold leading-none mb-6">Familiar</p>
           <p class="text-[rgb(21,101,192)] text-sm font-medium mb-6">El mayor ahorro por persona.</p>
           <div class="border-t border-gray-100 my-6"></div>
 
@@ -186,18 +183,78 @@
 
         <div class="mt-8">
           <button class="w-full border border-[rgb(21,101,192)] text-[rgb(21,101,192)] text-sm font-semibold py-3.5 rounded-xl hover:bg-[rgb(21,101,192)] hover:text-white transition-colors">
-            Elegir Familiar
+            Cotizar Familiar
           </button>
         </div>
       </div>
 
     </div>
 
+    <!-- Dots - solo móvil -->
+    <div class="flex justify-center items-center gap-2 mt-6 md:hidden">
+      <button class="planes-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)] transition-all duration-300" data-index="0"></button>
+      <button class="planes-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="1"></button>
+      <button class="planes-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="2"></button>
+    </div>
+
     <!-- Bottom note -->
     <p class="text-center text-gray-400 text-xs mt-8">
       ¿Tienes dudas sobre qué plan elegir?
-      <a href="#" class="text-[#0d5c56] font-semibold hover:underline ml-1">Agenda una consulta gratuita y te asesoramos →</a>
+      <a href="https://wa.me/5632630822" target="_blank" class="text-[rgb(21,101,192)] font-semibold hover:underline ml-1">Envíanos un mensaje de WhatsApp →</a>
     </p>
 
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.planes-container');
+    const dots = document.querySelectorAll('.planes-dot');
+
+    if (!container || dots.length === 0) return;
+
+    function updateDots(activeIndex) {
+      dots.forEach(function (dot, index) {
+        if (index === activeIndex) {
+          dot.classList.add('bg-[rgb(21,101,192)]');
+          dot.classList.remove('bg-[rgb(21,101,192)]/30');
+        } else {
+          dot.classList.remove('bg-[rgb(21,101,192)]');
+          dot.classList.add('bg-[rgb(21,101,192)]/30');
+        }
+      });
+    }
+
+    function scrollToCard(index) {
+      const cards = container.querySelectorAll('.snap-start');
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        updateDots(index);
+      }
+    }
+
+    dots.forEach(function (dot, index) {
+      dot.addEventListener('click', function () {
+        scrollToCard(index);
+      });
+    });
+
+    // Scroll listener mejorado y simplificado
+    var scrollTimeout;
+    container.addEventListener('scroll', function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function () {
+        const scrollLeft = container.scrollLeft;
+        const firstCard = container.querySelector('.snap-start') as HTMLElement;
+        const cardWidth = firstCard?.offsetWidth || 320;
+        const calculatedIndex = Math.round(scrollLeft / cardWidth);
+        const clampedIndex = Math.max(0, Math.min(calculatedIndex, 2));
+        
+        updateDots(clampedIndex);
+      }, 50);
+    });
+
+    // Inicializar primer dot como activo
+    updateDots(0);
+  });
+</script>
