@@ -9,71 +9,81 @@
       <h2 class="text-[rgb(33,33,33)] text-4xl md:text-5xl font-bold">Nuestro consultorio y resultados</h2>
     </div>
 
-    <!-- Grid -->
-    <div class="grid grid-cols-3 grid-rows-2 gap-4" style="height: 520px;">
+    <!-- Grid Container - Scroll horizontal en móviles, grid especial en desktop -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 md:grid-rows-2 md:overflow-visible" style="height: 520px;">
 
       <!-- Grande izquierda: Antes / Después -->
-      <div class="row-span-2 relative rounded-2xl overflow-hidden group cursor-pointer">
-        <img
-          src="../images/antes.webp"
-          alt="Clientes satisfechos"
-          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        <div class="absolute bottom-5 left-5">
-          <span class="text-white text-base font-semibold">Clientes satisfechos</span>
+      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full md:row-span-2 snap-start">
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer h-full">
+          <img
+            src="../images/antes.webp"
+            alt="Clientes satisfechos"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5">
+            <span class="text-white text-base font-semibold">Clientes satisfechos</span>
+          </div>
         </div>
       </div>
 
       <!-- Top center: Consultorio -->
-      <div class="relative rounded-2xl overflow-hidden group cursor-pointer">
-        <img
-          src="../images/consultorio.webp"
-          alt="Consultorio"
-          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-        <div class="absolute bottom-4 left-4">
-          <span class="text-white text-sm font-semibold">Consultorio</span>
+      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer h-full">
+          <img
+            src="../images/consultorio.webp"
+            alt="Consultorio"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="text-white text-sm font-semibold">Consultorio</span>
+          </div>
         </div>
       </div>
 
       <!-- Top right: Ortodoncia -->
-      <div class="relative rounded-2xl overflow-hidden group cursor-pointer">
-        <img
-          src="../images/Ortodoncia-servicios.webp"
-          alt="Ortodoncia"
-          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-        <div class="absolute bottom-4 left-4">
-          <span class="text-white text-sm font-semibold">Ortodoncia</span>
+      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer h-full">
+          <img
+            src="../images/Ortodoncia-servicios.webp"
+            alt="Ortodoncia"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="text-white text-sm font-semibold">Ortodoncia</span>
+          </div>
         </div>
       </div>
 
       <!-- Bottom center: Estética -->
-      <div class="relative rounded-2xl overflow-hidden group cursor-pointer">
-        <img
-          src="../images/estetica.webp"
-          alt="Estética"
-          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-        <div class="absolute bottom-4 left-4">
-          <span class="text-white text-sm font-semibold">Estética dental</span>
+      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer h-full">
+          <img
+            src="../images/estetica.webp"
+            alt="Estética"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="text-white text-sm font-semibold">Estética dental</span>
+          </div>
         </div>
       </div>
 
       <!-- Bottom right: Equipo -->
-      <div class="relative rounded-2xl overflow-hidden group cursor-pointer">
-        <img
-          src="../images/Proteccion.webp"
-          alt="Equipo"
-          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-        <div class="absolute bottom-4 left-4">
-          <span class="text-white text-sm font-semibold">Nuestro equipo</span>
+      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer h-full">
+          <img
+            src="../images/Proteccion.webp"
+            alt="Equipo"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="text-white text-sm font-semibold">Nuestro equipo</span>
+          </div>
         </div>
       </div>
 

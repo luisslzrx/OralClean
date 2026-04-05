@@ -2,14 +2,12 @@
   <div class="max-w-6xl mx-auto">
 
     <!-- Header -->
-    <div class="mb-12">
-      <p class="text-[rgb(21,101,192)] text-sm font-medium uppercase tracking-widest mb-2">Lo que ofrecemos</p>
-      <h2 class="text-[rgb(33,33,33)] text-4xl font-bold mb-3">Nuestros Servicios</h2>
-      <p class="text-[rgb(33,33,33)]/70 text-base max-w-lg">Ofrecemos una amplia gama de tratamientos dentales para cuidar tu sonrisa en cada etapa de tu vida.</p>
-    </div>
+    <h2 class="text-[#0d3b38] text-4xl md:text-5xl font-bold mb-10">
+      Ofrecemos una amplia gama <br> de tratamientos dentales
+    </h2>
 
     <!-- Asymmetric Grid -->
-    <div class="parent gap-4" style="
+    <div class="servicios-grid gap-4" style="
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 260px);
@@ -163,3 +161,19 @@
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 768px) {
+    .servicios-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: unset !important;
+      grid-template-rows: unset !important;
+    }
+    .servicios-grid > div {
+      grid-area: unset !important;
+      min-height: 300px !important;
+      max-height: 350px !important;
+    }
+  }
+</style>

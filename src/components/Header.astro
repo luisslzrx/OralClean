@@ -7,17 +7,13 @@
   <div class="max-w-6xl mx-auto px-8 py-4 flex items-center justify-between">
 
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-1.5 text-[rgb(21,101,192)]">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 2L14 13H2L8 2Z" fill="rgb(21,101,192)"/>
-      </svg>
-      <span class="logo-font text-xl font-semibold text-[rgb(33,33,33)]">Denty</span>
+    <a href="/index.html" class="flex items-center">
+      <img src="/images/icono.png" width="80" height="80" alt="OralClean Logo" />
     </a>
 
-    <!-- Nav Links - Center -->
-    <nav class="flex items-center gap-8">
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8">
       <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-[rgb(21,101,192)]">
-        <span class="w-1.5 h-1.5 rounded-full bg-[rgb(21,101,192)] inline-block"></span>
         Home
       </a>
       <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">About Us</a>
@@ -26,14 +22,41 @@
       <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">Doctors/Team</a>
     </nav>
 
-    <!-- Nav Links - Right -->
-    <nav class="flex items-center gap-8">
+    <!-- Desktop Right Nav -->
+    <nav class="hidden md:flex items-center gap-8">
       <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">FAQs</a>
       <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">Contact</a>
     </nav>
 
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden p-2 rounded-lg hover:bg-white/20 transition-colors" onclick="toggleMobileMenu()">
+      <svg class="w-6 h-6 text-[rgb(33,33,33)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
   </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden glass">
+    <nav class="flex flex-col px-8 py-4 space-y-4">
+      <a href="#" class="text-sm font-medium text-[rgb(21,101,192)]">Home</a>
+      <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">About Us</a>
+      <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">Services</a>
+      <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">Booking</a>
+      <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">Doctors/Team</a>
+      <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">FAQs</a>
+      <a href="#" class="text-sm text-[rgb(33,33,33)]/90 hover:text-[rgb(21,101,192)] transition-colors">Contact</a>
+    </nav>
+  </div>
+
 </header>
 
-</body>
-</html>
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+      menu.classList.toggle('hidden');
+    }
+  }
+</script>
