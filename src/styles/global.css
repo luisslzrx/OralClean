@@ -6,12 +6,11 @@ body {
 
 
 .glass {
-   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  transform: translateZ(0);
-  will-change: transform;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translate3d(0, 0, 0);
+  isolation: isolate;
 }
 
 .glass-dark {
