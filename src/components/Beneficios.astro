@@ -2,10 +2,10 @@
   <div class="max-w-6xl mx-auto">
 
     <!-- Cards Container - Scroll horizontal en móviles, grid en desktop -->
-    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible beneficios-container">
 
       <!-- Card 1: Free Consultation -->
-      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+      <div class="flex-shrink-0 w-[calc(100vw-4rem)] md:w-full snap-start">
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-[rgb(238,238,238)] h-full">
           <div class="mb-5">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[rgb(21,101,192)]" viewBox="0 0 64 64" fill="currentColor">
@@ -18,7 +18,7 @@
       </div>
 
       <!-- Card 2: Expert Dentist -->
-      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+      <div class="flex-shrink-0 w-[calc(100vw-4rem)] md:w-full snap-start">
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-[rgb(238,238,238)] h-full">
           <div class="mb-5">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[rgb(21,101,192)]" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -34,7 +34,7 @@
       </div>
 
       <!-- Card 3: High User Rating -->
-      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+      <div class="flex-shrink-0 w-[calc(100vw-4rem)] md:w-full snap-start">
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-[rgb(238,238,238)] h-full">
           <div class="mb-5">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[rgb(21,101,192)]" viewBox="0 0 64 64" fill="currentColor">
@@ -48,7 +48,7 @@
       </div>
 
       <!-- Card 4: Best Equipment -->
-      <div class="flex-shrink-0 w-[calc(50vw-2rem)] md:w-full snap-start">
+      <div class="flex-shrink-0 w-[calc(100vw-4rem)] md:w-full snap-start">
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-[rgb(238,238,238)] h-full">
           <div class="mb-5">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[rgb(21,101,192)]" viewBox="0 0 64 64" fill="currentColor">
@@ -62,5 +62,66 @@
 
     </div>
 
+    <!-- Dots - solo móvil -->
+    <div class="flex justify-center items-center gap-2 mt-6 md:hidden">
+      <button class="beneficios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)] transition-all duration-300" data-index="0"></button>
+      <button class="beneficios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="1"></button>
+      <button class="beneficios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="2"></button>
+      <button class="beneficios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="3"></button>
+    </div>
+
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.beneficios-container');
+    const dots = document.querySelectorAll('.beneficios-dot');
+
+    if (!container || dots.length === 0) return;
+
+    function updateDots(activeIndex) {
+      dots.forEach(function (dot, index) {
+        if (index === activeIndex) {
+          dot.classList.add('bg-[rgb(21,101,192)]');
+          dot.classList.remove('bg-[rgb(21,101,192)]/30');
+        } else {
+          dot.classList.remove('bg-[rgb(21,101,192)]');
+          dot.classList.add('bg-[rgb(21,101,192)]/30');
+        }
+      });
+    }
+
+    function scrollToCard(index) {
+      const cards = container.querySelectorAll('.snap-start');
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        updateDots(index);
+      }
+    }
+
+    dots.forEach(function (dot, index) {
+      dot.addEventListener('click', function () {
+        scrollToCard(index);
+      });
+    });
+
+    // Scroll listener
+    var scrollTimeout;
+    container.addEventListener('scroll', function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function () {
+        const scrollLeft = container.scrollLeft;
+        const firstCard = container.querySelector('.snap-start') as HTMLElement;
+        const cardWidth = firstCard?.offsetWidth || 320;
+        const calculatedIndex = Math.round(scrollLeft / cardWidth);
+        const clampedIndex = Math.max(0, Math.min(calculatedIndex, 3));
+        
+        updateDots(clampedIndex);
+      }, 50);
+    });
+
+    // Inicializar primer dot como activo
+    updateDots(0);
+  });
+</script>

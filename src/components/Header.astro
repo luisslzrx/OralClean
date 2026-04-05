@@ -59,4 +59,31 @@
       menu.classList.toggle('hidden');
     }
   }
+
+  // Cerrar menú al hacer click fuera
+  document.addEventListener('click', function(event: MouseEvent) {
+    const menu = document.getElementById('mobile-menu');
+    const target = event.target as HTMLElement;
+    const menuButton = target.closest('button[onclick="toggleMobileMenu()"]');
+    
+    if (menu && !menu.contains(target) && !menuButton) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  // Cerrar menú al hacer resize a desktop
+  window.addEventListener('resize', function() {
+    const menu = document.getElementById('mobile-menu');
+    if (window.innerWidth >= 768 && menu) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  // Cerrar menú al presionar Escape
+  document.addEventListener('keydown', function(event: KeyboardEvent) {
+    const menu = document.getElementById('mobile-menu');
+    if (event.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+      menu.classList.add('hidden');
+    }
+  });
 </script>

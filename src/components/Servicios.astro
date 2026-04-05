@@ -6,8 +6,8 @@
       Ofrecemos una amplia gama <br> de tratamientos dentales
     </h2>
 
-    <!-- Asymmetric Grid -->
-    <div class="servicios-grid gap-4" style="
+    <!-- Asymmetric Grid - Desktop / Horizontal Scroll - Mobile -->
+    <div class="servicios-grid servicios-container gap-4 md:grid md:grid-cols-3 md:grid-rows-3 md:overflow-visible overflow-x-auto snap-x snap-mandatory pb-4 md:pb-0" style="
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 260px);
@@ -15,7 +15,7 @@
     ">
 
       <!-- div1: tall left card (rows 1-2) -->
-      <div class="relative rounded-3xl overflow-hidden" style="grid-area: 1 / 1 / 3 / 2;">
+      <div class="relative rounded-3xl overflow-hidden w-80 md:w-full flex-shrink-0 snap-start" style="grid-area: 1 / 1 / 3 / 2;">
         <img src="/images/Ortodoncia.webp" alt="Ortodoncia" class="absolute inset-0 w-full h-full object-cover"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -39,7 +39,7 @@
       </div>
 
       <!-- div2: top center -->
-      <div class="relative rounded-3xl overflow-hidden" style="grid-area: 1 / 2 / 2 / 3;">
+      <div class="relative rounded-3xl overflow-hidden w-80 md:w-full flex-shrink-0 snap-start" style="grid-area: 1 / 2 / 2 / 3;">
         <img src="/images/Limpieza-dental.webp" alt="Limpieza Dental" class="absolute inset-0 w-full h-full object-cover"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10"></div>
         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -63,7 +63,7 @@
       </div>
 
       <!-- div3: top right -->
-      <div class="relative rounded-3xl overflow-hidden" style="grid-area: 1 / 3 / 2 / 4;">
+      <div class="relative rounded-3xl overflow-hidden w-80 md:w-full flex-shrink-0 snap-start" style="grid-area: 1 / 3 / 2 / 4;">
         <img src="/images/Implantes-dentales.webp" alt="Implantes" class="absolute inset-0 w-full h-full object-cover"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10"></div>
         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -87,7 +87,7 @@
       </div>
 
       <!-- div4: center middle (rows 2-3) -->
-      <div class="relative rounded-3xl overflow-hidden" style="grid-area: 2 / 2 / 4 / 3;">
+      <div class="relative rounded-3xl overflow-hidden w-80 md:w-full flex-shrink-0 snap-start" style="grid-area: 2 / 2 / 4 / 3;">
         <img src="/images/Blanqueamiento-dental.webp" alt="Blanqueamiento" class="absolute inset-0 w-full h-full object-cover"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -111,7 +111,7 @@
       </div>
 
       <!-- div5: bottom left -->
-      <div class="relative rounded-3xl overflow-hidden" style="grid-area: 3 / 1 / 4 / 2;">
+      <div class="relative rounded-3xl overflow-hidden w-80 md:w-full flex-shrink-0 snap-start" style="grid-area: 3 / 1 / 4 / 2;">
         <img src="/images/Proteccion.webp" alt="Protección Dental" class="absolute inset-0 w-full h-full object-cover"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10"></div>
         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -135,7 +135,7 @@
       </div>
 
       <!-- div6: right tall (rows 2-3) -->
-      <div class="relative rounded-3xl overflow-hidden" style="grid-area: 2 / 3 / 4 / 4;">
+      <div class="relative rounded-3xl overflow-hidden w-80 md:w-full flex-shrink-0 snap-start" style="grid-area: 2 / 3 / 4 / 4;">
         <img src="/images/Endodoncia.webp" alt="Endodoncia" class="absolute inset-0 w-full h-full object-cover"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -159,6 +159,16 @@
       </div>
 
     </div>
+
+    <!-- Dots - solo móvil -->
+    <div class="flex justify-center items-center gap-2 mt-6 md:hidden">
+      <button class="servicios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)] transition-all duration-300" data-index="0"></button>
+      <button class="servicios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="1"></button>
+      <button class="servicios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="2"></button>
+      <button class="servicios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="3"></button>
+      <button class="servicios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="4"></button>
+      <button class="servicios-dot w-2 h-2 rounded-full bg-[rgb(21,101,192)]/30 transition-all duration-300" data-index="5"></button>
+    </div>
   </div>
 </section>
 
@@ -166,14 +176,66 @@
   @media (max-width: 768px) {
     .servicios-grid {
       display: flex !important;
-      flex-direction: column !important;
+      flex-direction: row !important;
       grid-template-columns: unset !important;
       grid-template-rows: unset !important;
     }
     .servicios-grid > div {
       grid-area: unset !important;
-      min-height: 300px !important;
-      max-height: 350px !important;
+      height: 400px !important;
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.servicios-container');
+    const dots = document.querySelectorAll('.servicios-dot');
+
+    if (!container || dots.length === 0) return;
+
+    function updateDots(activeIndex: number) {
+      dots.forEach(function (dot, index) {
+        if (index === activeIndex) {
+          dot.classList.add('bg-[rgb(21,101,192)]');
+          dot.classList.remove('bg-[rgb(21,101,192)]/30');
+        } else {
+          dot.classList.remove('bg-[rgb(21,101,192)]');
+          dot.classList.add('bg-[rgb(21,101,192)]/30');
+        }
+      });
+    }
+
+    function scrollToCard(index: number) {
+      const cards = container?.querySelectorAll('.snap-start');
+      if (container && cards && cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        updateDots(index);
+      }
+    }
+
+    dots.forEach(function (dot, index) {
+      dot.addEventListener('click', function () {
+        scrollToCard(index);
+      });
+    });
+
+    // Scroll listener
+    var scrollTimeout: number;
+    container.addEventListener('scroll', function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(function () {
+        const scrollLeft = container.scrollLeft;
+        const firstCard = container.querySelector('.snap-start') as HTMLElement;
+        const cardWidth = firstCard?.offsetWidth || 320;
+        const calculatedIndex = Math.round(scrollLeft / cardWidth);
+        const clampedIndex = Math.max(0, Math.min(calculatedIndex, 5));
+        
+        updateDots(clampedIndex);
+      }, 50);
+    });
+
+    // Inicializar primer dot como activo
+    updateDots(0);
+  });
+</script>
