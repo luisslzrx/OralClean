@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+body { 
+  font-family: 'DM Sans', sans-serif; 
+}
+
+
+.glass {
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+.glass-dark {
+  background: rgba(10,40,40,0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #0d5c56, #14b8a6);
+}
+
+.avatar-ring {
+  border: 2px solid white;
+  margin-left: -8px;
+}
